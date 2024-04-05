@@ -1,5 +1,5 @@
 package battleTime2.unit.monster;
 
-public class MonsterBat {
+public class MonsterBat extends Monster {
 
 }

@@ -1,5 +1,7 @@
 package battleTime2.unit.monster;
 
-public class Monster {
+import battleTime2.unit.Unit;
+
+public class Monster extends Unit {
 
 }

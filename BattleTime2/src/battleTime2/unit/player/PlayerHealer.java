@@ -1,5 +1,5 @@
 package battleTime2.unit.player;
 
-public class PlayerHealer {
+public class PlayerHealer extends Player{
 
 }

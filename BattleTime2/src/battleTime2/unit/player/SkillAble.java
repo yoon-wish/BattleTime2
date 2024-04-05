@@ -1,5 +1,8 @@
 package battleTime2.unit.player;
 
-public interface SkillAble {
+import battleTime2.unit.Unit;
 
+public interface SkillAble {
+	public void skill();
+	public void skill(Unit unit);
 }
