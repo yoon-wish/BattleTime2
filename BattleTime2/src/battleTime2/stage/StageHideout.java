@@ -18,11 +18,11 @@ public class StageHideout extends Stage{
 		System.out.println("    ❹ 마을");
 		System.out.println("└──────────────┘");
 		System.out.print("👉 ");
-		int sel = GameManager.sc.nextInt();
+		int sel = GameManager.inputNumber();
 		
 		while (!((sel == WAREHOUSE) || (sel == SLEEP) || (sel == WALLET) || (sel == VILLAGE))) {
 			System.out.print("👉 ");
-			sel = GameManager.sc.nextInt();
+			sel = GameManager.inputNumber();
 		}
 		
 		if(sel == WAREHOUSE) {

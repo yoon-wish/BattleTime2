@@ -19,15 +19,14 @@ public class GameManager {
 	public static Random rand = new Random();
 	public static String nextStage = "";
 
-	public static  GuildManager guildManager = GuildManager.getInstance();
-	public static  InventoryManager inventoryManager = InventoryManager.getInstance();
-	
-	
-	public static int day = 1;			// 날짜
-	public static int battleNum; 	// 하루 배틀 횟수 제한
-	
+	public static GuildManager guildManager = GuildManager.getInstance();
+	public static InventoryManager inventoryManager = InventoryManager.getInstance();
+
+	public static int day = 1; // 날짜
+	public static int battleNum; // 하루 배틀 횟수 제한
+
 	private Map<String, Stage> stageList = new HashMap<String, Stage>();
-	
+
 	public GameManager() {
 		stageList.put("TITLE", new StageTitle());
 		stageList.put("BATTLE", new StageBattle());
@@ -36,10 +35,10 @@ public class GameManager {
 		stageList.put("STORE", new StageStore());
 		stageList.put("HIDEOUT", new StageHideout());
 		stageList.put("GUILD", new StageGuild());
-		
+
 		nextStage = "TITLE";
 	}
-	
+
 	public boolean changeStage() {
 		if (nextStage != "" && nextStage != "TITLE") {
 			System.out.printf("»»═════ [%s] ═════««\n", nextStage);
@@ -58,5 +57,19 @@ public class GameManager {
 			return false;
 		else
 			return true;
+	}
+
+	public static int inputNumber() {
+		int number = -1;
+		try {
+			String input = sc.next();
+			number = Integer.parseInt(input);
+		} catch (Exception e) {
+		}
+		return number;
+	}
+	
+	public static String inputString() {
+		return sc.next();
 	}
 }

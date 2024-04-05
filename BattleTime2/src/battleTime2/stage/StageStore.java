@@ -47,10 +47,10 @@ public class StageStore extends Stage {
 
 		System.out.print("👉 ");
 
-		sel = GameManager.sc.nextInt();
+		sel = GameManager.inputNumber();
 		while (!((sel == BUY) || (sel == SELL) || (sel == VILLAGE))) {
 			System.out.print("👉 ");
-			sel = GameManager.sc.nextInt();
+			sel = GameManager.inputNumber();
 		}
 
 		// 구매
@@ -61,11 +61,11 @@ public class StageStore extends Stage {
 			System.out.println("    ❸ 갑옷");
 			System.out.println("└──────────────┘");
 			System.out.print("👉 ");
-			sel = GameManager.sc.nextInt();
+			sel = GameManager.inputNumber();
 
 			while (!((sel == Item.POTION) || (sel == Item.WEAPON) || (sel == Item.ARMOR))) {
 				System.out.print("👉 ");
-				sel = GameManager.sc.nextInt();
+				sel = GameManager.inputNumber();
 			}
 
 			// 포션
@@ -76,11 +76,11 @@ public class StageStore extends Stage {
 				System.out.println("└──────────────┘");
 
 				System.out.print("👉 ");
-				sel = GameManager.sc.nextInt();
+				sel = GameManager.inputNumber();
 
 				while (!((sel == Potion.HP) || (sel == Potion.SP))) {
 					System.out.print("👉 ");
-					sel = GameManager.sc.nextInt();
+					sel = GameManager.inputNumber();
 				}
 
 				if (sel == Potion.HP) {
@@ -106,11 +106,11 @@ public class StageStore extends Stage {
 				System.out.println("    ❸ 고급");
 				System.out.println("└──────────────┘");
 				System.out.print("👉 ");
-				sel = GameManager.sc.nextInt();
+				sel = GameManager.inputNumber();
 
 				while (!((sel == Item.BRONZE) || (sel == Item.SILVER) || (sel == Item.GOLD))) {
 					System.out.print("👉 ");
-					sel = GameManager.sc.nextInt();
+					sel = GameManager.inputNumber();
 				}
 
 				if (!printItem(type, sel)) {
@@ -166,11 +166,11 @@ public class StageStore extends Stage {
 		System.out.println("└──────────────┘");
 
 		System.out.print("👉 ");
-		int sel = GameManager.sc.nextInt();
+		int sel = GameManager.inputNumber();
 
 		while (!((sel == BUY) || (sel == INFO))) {
 			System.out.print("👉 ");
-			sel = GameManager.sc.nextInt();
+			sel = GameManager.inputNumber();
 		}
 
 		if (sel == BUY) {
@@ -181,7 +181,7 @@ public class StageStore extends Stage {
 
 			System.out.println("구매할까? (y/n)");
 			System.out.print("👉 ");
-			if (GameManager.sc.next().equals("y")) {
+			if (GameManager.inputString().equals("y")) {
 				if (!buyItem(item))
 					return false;
 			} else {
@@ -201,7 +201,7 @@ public class StageStore extends Stage {
 		System.out.println("└──────────────────────┘");
 
 		System.out.print("👉 ");
-		int number = GameManager.sc.nextInt();
+		int number = GameManager.inputNumber();
 
 		if (number <= 0) {
 			printNotTrade("buy");
@@ -246,11 +246,11 @@ public class StageStore extends Stage {
 		System.out.println("└──────────────┘");
 
 		System.out.print("👉 ");
-		int sel = GameManager.sc.nextInt();
+		int sel = GameManager.inputNumber();
 
 		while (!((sel == BUY) || (sel == INFO))) {
 			System.out.print("👉 ");
-			sel = GameManager.sc.nextInt();
+			sel = GameManager.inputNumber();
 		}
 
 		if (sel == BUY) {
@@ -265,7 +265,7 @@ public class StageStore extends Stage {
 
 			System.out.println("구매할까? (y/n)");
 			System.out.print("👉 ");
-			if (GameManager.sc.next().equals("y")) {
+			if (GameManager.inputString().equals("y")) {
 				if (!buyPotion(name, potion)) {
 					return false;
 				}
@@ -302,7 +302,7 @@ public class StageStore extends Stage {
 		}
 
 		System.out.print("👉 ");
-		int number = GameManager.sc.nextInt();
+		int number = GameManager.inputNumber();
 
 		while (number < 0 || number > potion) {
 			System.out.println("┌─────────────────────────────┐");
@@ -310,7 +310,7 @@ public class StageStore extends Stage {
 			System.out.printf("  %d개 구매할 수 있네\n", potion);
 			System.out.println("└─────────────────────────────┘");
 			System.out.print("👉 ");
-			number = GameManager.sc.nextInt();
+			number = GameManager.inputNumber();
 		}
 
 		if (number * price > GameManager.guildManager.readCoin()) {
@@ -361,7 +361,7 @@ public class StageStore extends Stage {
 		System.out.println("└─────────────────────────┘");
 
 		System.out.print("👉 ");
-		int index = GameManager.sc.nextInt() - 1;
+		int index = GameManager.inputNumber() - 1;
 		int size = GameManager.inventoryManager.getSize();
 		if (index < 0 || index >= size) {
 			printNotTrade("sell");

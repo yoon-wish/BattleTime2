@@ -50,8 +50,32 @@ public class Unit {
 		this.name = name;
 	}
 	
+	public String getJop() {
+		return this.job;
+	}
+	
+	public int getHp() {
+		return this.hp;
+	}
+	
+	public int getPower() {
+		return this.power;
+	}
+	
+	public int getDefense() {
+		return this.defense;
+	}
+	
 	public int getLevel() {
 		return this.level;
+	}
+	
+	public boolean getParty() {
+		return this.isParty;
+	}
+	
+	public void setParty() {
+		this.isParty = !isParty;
 	}
 	
 }

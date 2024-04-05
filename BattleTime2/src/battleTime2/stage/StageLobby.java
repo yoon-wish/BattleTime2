@@ -21,11 +21,11 @@ public class StageLobby extends Stage {
 		System.out.println("    ❺ 종료");
 		System.out.println("└──────────────┘");
 		System.out.print("👉 ");
-		int sel = GameManager.sc.nextInt();
+		int sel = GameManager.inputNumber();
 
 		while (!((sel == GUILD) || (sel == VILLAGE) || (sel == BATTLE) || (sel == SAVE) || (sel == EXIT))) {
 			System.out.print("👉 ");
-			sel = GameManager.sc.nextInt();
+			sel = GameManager.inputNumber();
 		}
 
 		// 길드
@@ -48,10 +48,10 @@ public class StageLobby extends Stage {
 		else if(sel == EXIT) {
 			System.out.println("종료하실건가요? (y/n)");
 			System.out.print("👉 ");
-			if (GameManager.sc.next().equals("y")) {
+			if (GameManager.inputString().equals("y")) {
 				System.out.println("아 참, 저장은 하셨나요? (y/n)");
 				System.out.print("👉 ");
-				if (GameManager.sc.next().equals("y")) {
+				if (GameManager.inputString().equals("y")) {
 					System.out.println("다음에 다시 만나요 ~");
 					GameManager.nextStage = "";
 				} else {

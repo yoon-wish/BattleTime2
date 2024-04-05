@@ -24,5 +24,12 @@ public class Player extends Unit implements SkillAble{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public String toString() {
+		String info = "";
+		
+		return String.format("[%s] %s/♥%d/🗡️%d/🛡️%d", getName(), getJop(), getHp(), getPower(), getDefense());
+	}
 
 }

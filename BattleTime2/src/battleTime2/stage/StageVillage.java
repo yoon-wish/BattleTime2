@@ -17,11 +17,11 @@ public class StageVillage extends Stage{
 		System.out.println("└──────────────┘");
 
 		System.out.print("👉 ");
-		int sel = GameManager.sc.nextInt();
+		int sel = GameManager.inputNumber();
 
 		while (!((sel == STORE) || (sel == LOBBY) || (sel == HOUSE))) {
 			System.out.print("👉 ");
-			sel = GameManager.sc.nextInt();
+			sel = GameManager.inputNumber();
 		}
 
 		if (sel == STORE)
