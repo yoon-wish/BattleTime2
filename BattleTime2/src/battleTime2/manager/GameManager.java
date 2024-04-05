@@ -15,12 +15,13 @@ import battleTime2.stage.StageTitle;
 import battleTime2.stage.StageVillage;
 
 public class GameManager {
-	public static  GuildManager guildManager = GuildManager.getInstance();
-	public static  InventoryManager inventoryManager = InventoryManager.getInstance();
-	
 	public static Scanner sc = new Scanner(System.in);
 	public static Random rand = new Random();
 	public static String nextStage = "";
+
+	public static  GuildManager guildManager = GuildManager.getInstance();
+	public static  InventoryManager inventoryManager = InventoryManager.getInstance();
+	
 	
 	public static int day = 1;			// 날짜
 	public static int battleNum; 	// 하루 배틀 횟수 제한

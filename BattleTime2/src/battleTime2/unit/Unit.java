@@ -42,6 +42,10 @@ public class Unit {
 		this.hpBar = new int[hp/50];
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
