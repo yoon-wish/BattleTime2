@@ -22,7 +22,7 @@ public class GameManager {
 	public static Random rand = new Random();
 	public static String nextStage = "";
 	
-	public static int day;			// 날짜
+	public static int day = 1;			// 날짜
 	public static int battleNum; 	// 하루 배틀 횟수 제한
 	
 	private Map<String, Stage> stageList = new HashMap<String, Stage>();

@@ -1,0 +1,59 @@
+package battleTime2.item;
+
+public class Weapon extends Item{
+	public static final int TYPE_SIZE = 3;
+	
+	public Weapon(int subType) {
+		super(Item.WEAPON, subType);
+		
+		String name = "초급무기";
+		int price = 300;
+		String info = bWeapon();
+		
+		switch(subType) {
+		case Item.BRONZE :
+			break;
+		case Item.SILVER :
+			name = "중급무기";
+			price = 600;
+			info = sWeapon();
+			break;
+		case Item.GOLD :
+			name = "고급무기";
+			price = 1000;
+			info = gWeapon();
+			break;
+		}
+		
+		super.setInfo(info);
+		super.setName(name);
+		super.setPrice(price);
+	}
+
+	private String bWeapon() {
+		String info = "┌─────────────────────────────────┐";
+		info += "         [초급 무기]";
+		info += "   플레이어 공격력 20% 상승 ";
+		info += "└─────────────────────────────────┘";
+		
+		return info;
+	}
+	
+	private String sWeapon() {
+		String info = "┌─────────────────────────────────┐";
+		info += "         [중급 무기]";
+		info += "   플레이어 공격력 30% 상승";
+		info += "└─────────────────────────────────┘";
+		
+		return info;
+	}
+	private String gWeapon() {
+		String info = "┌─────────────────────────────────┐";
+		info += "         [고급 무기]";
+		info += "   플레이어 공격력 50% 상승";
+		info += "└─────────────────────────────────┘";
+		
+		return info;
+	}
+	
+}
