@@ -17,8 +17,7 @@ public class StageTitle extends Stage{
 		}
 
 		System.out.printf("︵‿︵‿୨ << %d일차 >> ୧‿︵‿︵\n", GameManager.day);
-//		GameManager.nextStage = "LOBBY";
-		GameManager.nextStage = "STORE";
+		GameManager.nextStage = "LOBBY";
 
 		return false;
 	}
