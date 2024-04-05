@@ -20,7 +20,7 @@ public class StageGuild extends Stage{
 		System.out.println("    ❷ 길드원 추방");
 		System.out.println("    ❸ 파티 설정");
 		System.out.println("    ❹ 길드원 정보");
-		System.out.println("    ❺ 파티원 전보");
+		System.out.println("    ❺ 파티원 정보");
 		System.out.println("└───────────────────┘");
 		System.out.print("👉 ");
 		int sel = GameManager.inputNumber();
@@ -41,7 +41,7 @@ public class StageGuild extends Stage{
 		
 		// 길드원 추방
 		else if(sel == EXILE) {
-			GameManager.guildManager.readPalyer();
+			GameManager.guildManager.readAllPalyer();
 			System.out.print("👉 ");
 			int index = GameManager.inputNumber() - 1;
 			if(index < 0 || index >= GameManager.guildManager.guildSize()) {
@@ -76,7 +76,7 @@ public class StageGuild extends Stage{
 			
 			// 파티 추가
 			if(menu == ADD_PARTY) {
-				GameManager.guildManager.readPalyer();
+				GameManager.guildManager.readAllPalyer();
 				System.out.print("👉 ");
 				int index = GameManager.inputNumber() - 1;
 				if(index < 0 || index >= GameManager.guildManager.guildSize()) {
@@ -105,7 +105,7 @@ public class StageGuild extends Stage{
 		
 		// 길드원 정보
 		else if(sel == GUILD_INFO) {
-			GameManager.guildManager.readPalyer();
+			GameManager.guildManager.readAllPalyer();
 			System.out.println("👉 닫기 (아무키나 누르세요)");
 			String input = GameManager.inputString();
 			

@@ -1,5 +1,7 @@
 package battleTime2.unit;
 
+import battleTime2.item.Item;
+
 public class Unit {
 	
 	private final int MY_HP = 1;
@@ -13,6 +15,10 @@ public class Unit {
 	private int defense;
 	private int level;
 	private int point;
+	
+	private Item weapon;
+	private Item armor;
+	
 	private boolean isParty;
 	
 	// 플레이어
@@ -76,6 +82,30 @@ public class Unit {
 	
 	public void setParty() {
 		this.isParty = !isParty;
+	}
+	
+	public Item getWeapon() {
+		return this.weapon;
+	}
+	
+	public void setWeapon(Item weapon) {
+		this.weapon = weapon;
+	}
+	
+	public void setWeapon() {
+		this.weapon = null;
+	}
+	
+	public Item getArmor() {
+		return this.armor;
+	}
+	
+	public void setArmor(Item armor) {
+		this.armor = armor;
+	}
+	
+	public void setArmor() {
+		this.armor = null;
 	}
 	
 }

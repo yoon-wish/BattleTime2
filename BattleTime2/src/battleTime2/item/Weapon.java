@@ -8,6 +8,7 @@ public class Weapon extends Item{
 		
 		String name = "초급무기";
 		int price = 300;
+		double ability = 1.2;
 		String info = bWeapon();
 		
 		switch(subType) {
@@ -16,11 +17,13 @@ public class Weapon extends Item{
 		case Item.SILVER :
 			name = "중급무기";
 			price = 600;
+			ability = 1.3;
 			info = sWeapon();
 			break;
 		case Item.GOLD :
 			name = "고급무기";
 			price = 1000;
+			ability = 1.5;
 			info = gWeapon();
 			break;
 		}

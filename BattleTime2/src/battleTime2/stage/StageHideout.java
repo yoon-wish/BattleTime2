@@ -2,13 +2,17 @@ package battleTime2.stage;
 
 import battleTime2.manager.GameManager;
 
-public class StageHideout extends Stage{
+public class StageHideout extends Stage {
 
 	private final int WAREHOUSE = 1;
 	private final int WALLET = 2;
 	private final int SLEEP = 3;
 	private final int VILLAGE = 4;
-	
+
+	private final int EQUIP = 1;
+	private final int UNEQUIP = 2;
+	private final int SORT = 3;
+
 	@Override
 	public boolean update() {
 		System.out.println("┌──────────────┐");
@@ -19,30 +23,80 @@ public class StageHideout extends Stage{
 		System.out.println("└──────────────┘");
 		System.out.print("👉 ");
 		int sel = GameManager.inputNumber();
-		
+
 		while (!((sel == WAREHOUSE) || (sel == SLEEP) || (sel == WALLET) || (sel == VILLAGE))) {
 			System.out.print("👉 ");
 			sel = GameManager.inputNumber();
 		}
-		
-		if(sel == WAREHOUSE) {
+
+		if (sel == WAREHOUSE) {
+			boolean haveItems = GameManager.inventoryManager.readInventory();
+
+			System.out.println("┌──────────────┐");
+			System.out.println("    ❶ 장착");
+			System.out.println("    ❷ 해제");
+			System.out.println("    ❸ 정렬");
+			System.out.println("└──────────────┘");
+
+			System.out.print("👉 ");
+			int menu = GameManager.inputNumber();
+
+			while (!((menu == EQUIP) || (menu == UNEQUIP) || (menu == SORT))) {
+				System.out.print("👉 ");
+				menu = GameManager.inputNumber();
+			}
+
+			// 장착
+			if (menu == EQUIP) {
+				if (haveItems) {
+					System.out.println("장착할 아이템 번호");
+					System.out.print("👉 ");
+					int index = GameManager.inputNumber() - 1;
+					if (index < 0 || index >= GameManager.inventoryManager.getSize()) {
+						System.out.println("존재하지 않는 아이템입니다.");
+						return false;
+					}
+
+					if (!GameManager.inventoryManager.equip(index))
+						return false;
+
+					System.out.println("장착완료");
+				} else {
+					System.out.println("장착할 아이템이 없다.");
+				}
+			}
+
+			// 해제
+			else if (menu == UNEQUIP) {
+				if (!GameManager.inventoryManager.unequip()) {
+					return false;
+				}
+
+				System.out.println("해제완료");
+			} 
 			
-		} else if(sel == WALLET) {
+			//  정렬
+			else if(menu == SORT) {
+				GameManager.inventoryManager.sortItems();
+			}
+
+		} else if (sel == WALLET) {
 			System.out.println("┌────────────────────────────┐");
-//			System.out.println("   보유 코인: " + GameManager.coin + " coin");
+			System.out.println("   보유 코인: " + GameManager.guildManager.readCoin() + " coin");
 			System.out.println("└────────────────────────────┘");
-		} else if(sel == SLEEP) {
-			
-		} else if(sel == VILLAGE) {
+		} else if (sel == SLEEP) {
+
+		} else if (sel == VILLAGE) {
 			GameManager.nextStage = "VILLAGE";
 		}
+
 		return false;
 	}
 
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

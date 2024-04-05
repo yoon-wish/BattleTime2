@@ -40,7 +40,7 @@ public class StageStore extends Stage {
 		int sel = 0;
 
 		System.out.println("┌──────────────┐");
-		System.out.println("    ❶ 구매");
+		System.out.println("    ❶ 쇼핑");
 		System.out.println("    ❷ 판매");
 		System.out.println("    ❸ 마을");
 		System.out.println("└──────────────┘");
@@ -95,8 +95,8 @@ public class StageStore extends Stage {
 					}
 				}
 
-			} 
-			
+			}
+
 			// 무기 or 갑옷
 			else {
 				int type = sel == Item.WEAPON ? Item.WEAPON : Item.ARMOR;
@@ -124,7 +124,7 @@ public class StageStore extends Stage {
 			if (!sellItem())
 				return false;
 
-		} 
+		}
 		// 마을
 		else if (sel == VILLAGE) {
 			Back();
@@ -225,7 +225,10 @@ public class StageStore extends Stage {
 			return false;
 		}
 
-		GameManager.inventoryManager.createItem(item);
+		for (int i = 0; i < number; i++) {
+			GameManager.inventoryManager.createItem(item);
+		}
+		
 		GameManager.guildManager.SubCoin(number * price);
 
 		String name = item.getName();
@@ -331,7 +334,8 @@ public class StageStore extends Stage {
 		}
 
 		int subType = potion == hpPotion ? Potion.HP : Potion.SP;
-		Item item = new Item(Item.POTION, subType);
+		Potion item = new Potion(subType);
+		System.out.println("item" + item.getName());
 		GameManager.inventoryManager.createItem(item);
 
 		potion -= number;

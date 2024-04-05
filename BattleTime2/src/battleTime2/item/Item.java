@@ -18,11 +18,16 @@ public class Item {
 	private String name;
 	private int price;
 	private String info;
+	private double ability;
 	private boolean isWear;
 	
 	public Item(int type, int subType) {
 		this.type = type;
 		this.subType = subType;
+	}
+	
+	public int getType() {
+		return this.type;
 	}
 	
 	public String getName() {
@@ -47,6 +52,18 @@ public class Item {
 	
 	public void setInfo(String info) {
 		this.info = info;
+	}
+
+	public double getAbility() {
+		return this.ability;
+	}
+	
+	public void setAbility(double ability) {
+		this.ability = ability;
+	}
+	
+	public boolean getWear() {
+		return this.isWear;
 	}
 	
 	public void setWear() {

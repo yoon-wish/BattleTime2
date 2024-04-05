@@ -1,7 +1,7 @@
 package battleTime2.guild;
 
 public class Guild {
-	private int coin;
+	private int coin = 1000;
 
 	// 코인
 	public int getCoin() {

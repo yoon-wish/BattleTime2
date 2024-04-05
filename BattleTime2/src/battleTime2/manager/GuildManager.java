@@ -22,8 +22,6 @@ public class GuildManager {
 	private ArrayList<Player> player_list;
 	private ArrayList<Player> party_list;
 
-	
-	
 	private static GuildManager instance = new GuildManager();
 
 	public static GuildManager getInstance() {
@@ -138,14 +136,66 @@ public class GuildManager {
 		return true;
 	}
 
-	public void readPalyer() {
-		System.out.println("┌──────────────────────────────────┐");
+	public void readAllPalyer() {
+		System.out.println("┌─────────────────────────────────────┐");
 		for (int i = 0; i < player_list.size(); i++) {
 			Player player = player_list.get(i);
 			System.out.printf("   %d) ", i+1);
 			System.out.println(player);
 		}
-		System.out.println("└──────────────────────────────────┘");
+		System.out.println("└─────────────────────────────────────┘");
+	}
+	
+	public Player readPlayer(int index) {
+		return player_list.get(index);
+	}
+	
+	public Player findPlayerWithItems() {
+		// 아이템 장착 중인 플레이어 전부 출력
+		ArrayList<Player> temp = new ArrayList<>();
+		System.out.println("┌─────────────────────────────────────┐");
+		int number = 1;
+		for(int i=0; i<player_list.size(); i++) {
+			Player player = player_list.get(i);
+			if(player.getWeapon() != null || player.getArmor() != null) {
+				temp.add(player);
+				System.out.printf("   %d) ", number ++);
+				System.out.println(player);
+				
+				System.out.print("      ");
+				if(player.getWeapon() != null) {
+					System.out.printf("%s ", player.getWeapon().getName());
+				}
+				
+				if(player.getArmor() != null) {
+					System.out.printf("%s ", player.getArmor().getName());
+				}
+				
+				System.out.println();
+			}
+		}
+		System.out.println("└─────────────────────────────────────┘");
+		
+		if(temp.size() == 0) {
+			return null;
+		}
+		
+		// 플레이어 선택
+		System.out.print("👉 ");
+		int index = GameManager.inputNumber() - 1;
+		while(index < 0 || index >= temp.size()) {
+			System.out.print("👉 ");
+			index = GameManager.inputNumber() - 1;
+		}
+		
+		// player_list에서 플레이어 찾기
+		int idx = -1;
+		for(int i=0; i<player_list.size(); i++) {
+			if(temp.get(index).getName().equals(player_list.get(i).getName()))
+				idx = i;
+		}
+		
+		return player_list.get(idx);
 	}
 	
 	public boolean addParty(int index) {

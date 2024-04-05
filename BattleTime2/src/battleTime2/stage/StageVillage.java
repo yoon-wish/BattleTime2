@@ -27,7 +27,7 @@ public class StageVillage extends Stage{
 		if (sel == STORE)
 			GameManager.nextStage = "STORE";
 		else if(sel == HOUSE)
-			GameManager.nextStage = "HOUSE";
+			GameManager.nextStage = "HIDEOUT";
 		else if (sel == LOBBY)
 			GameManager.nextStage = "LOBBY";
 
