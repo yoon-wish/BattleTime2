@@ -25,6 +25,22 @@ public class Player extends Unit implements SkillAble{
 		
 	}
 	
+	public int getMaxSp() {
+		return this.maxSp;
+	}
+	
+	public int getSp() {
+		return this.sp;
+	}
+	
+	public void setSubSp() {
+		this.sp --;
+	}
+	
+	public void setAddSp() {
+		this.sp ++;
+	}
+	
 	@Override
 	public String toString() {
 		String info = "";

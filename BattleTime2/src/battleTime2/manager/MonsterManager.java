@@ -7,10 +7,16 @@ import battleTime2.unit.monster.Monster;
 
 public class MonsterManager {
 
-	private ArrayList<Unit> monster_list;
+	public static ArrayList<Unit> monster_list;
 	
-	private String path = "BattleTime2.battleTime2.unit.monster.Monster";
+	private String path = "battleTime2.unit.monster.Monster";
 	private String monNames[] = { "Bat", "Orc", "Troll" };
+	
+	private static MonsterManager instance = new MonsterManager();
+
+	public static MonsterManager getInstance() {
+		return instance;
+	}
 	
 	public MonsterManager() {
 		monster_list = new ArrayList<>();

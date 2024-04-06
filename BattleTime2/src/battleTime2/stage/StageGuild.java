@@ -9,6 +9,7 @@ public class StageGuild extends Stage{
 	private final int PARTY = 3;
 	private final int GUILD_INFO = 4;
 	private final int PARTY_INFO = 5;
+	private final int LOBBY = 6;
 	
 	private final int ADD_PARTY = 1;
 	private final int SUB_PARTY = 2;
@@ -21,11 +22,12 @@ public class StageGuild extends Stage{
 		System.out.println("    ❸ 파티 설정");
 		System.out.println("    ❹ 길드원 정보");
 		System.out.println("    ❺ 파티원 정보");
+		System.out.println("    ❻ 로비");
 		System.out.println("└───────────────────┘");
 		System.out.print("👉 ");
 		int sel = GameManager.inputNumber();
 
-		while (!((sel == ADD) || (sel == EXILE) || (sel == PARTY) || (sel == GUILD_INFO) || (sel == PARTY_INFO))) {
+		while (!((sel == ADD) || (sel == EXILE) || (sel == PARTY) || (sel == GUILD_INFO) || (sel == PARTY_INFO) || (sel == LOBBY))) {
 			System.out.print("👉 ");
 			sel = GameManager.inputNumber();
 		}
@@ -108,8 +110,6 @@ public class StageGuild extends Stage{
 			GameManager.guildManager.readAllPalyer();
 			System.out.println("👉 닫기 (아무키나 누르세요)");
 			String input = GameManager.inputString();
-			
-			return false;
 		}
 		
 		// 파티원 정보
@@ -117,11 +117,14 @@ public class StageGuild extends Stage{
 			GameManager.guildManager.readParty();
 			System.out.println("👉 닫기 (아무키나 누르세요)");
 			String input = GameManager.inputString();
-			
-			return false;
+		}
+	
+		else if(sel == LOBBY) {
+			GameManager.nextStage = "LOBBY";
 		}
 		
 		return false;
+	
 	}
 
 	@Override

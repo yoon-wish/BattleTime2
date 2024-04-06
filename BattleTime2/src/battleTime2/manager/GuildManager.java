@@ -20,7 +20,8 @@ public class GuildManager {
 
 	private Guild guild = new Guild();
 	private ArrayList<Player> player_list;
-	private ArrayList<Player> party_list;
+	
+	public static ArrayList<Player> partyList;
 
 	private static GuildManager instance = new GuildManager();
 
@@ -30,7 +31,7 @@ public class GuildManager {
 
 	public GuildManager() {
 		player_list = new ArrayList<>();
-		party_list = new ArrayList<>();
+		partyList = new ArrayList<>();
 		
 		start();
 	}
@@ -206,12 +207,12 @@ public class GuildManager {
 			return false;
 		}
 		
-		if(party_list.size() == SIZE) {
+		if(partyList.size() == SIZE) {
 			System.out.println("정원이 마감되었습니다.");
 			return false;
 		}
 		
-		party_list.add(player);
+		partyList.add(player);
 		player.setParty();
 		System.out.println("파티에 추가되었습니다.");
 		return true;
@@ -219,11 +220,11 @@ public class GuildManager {
 	}
 	
 	public void subParty(int index) {
-		String temp = party_list.get(index).getName();
+		String temp = partyList.get(index).getName();
 		int idx = findIndexByName(temp);
 		
 		player_list.get(idx).setParty(); // 파티 참여 여부 해제
-		party_list.remove(index);		 // 파티 제외
+		partyList.remove(index);		 // 파티 제외
 		
 		System.out.printf("[%s]길드원이 파티에서 나왔습니다.\n", temp);
 	}
@@ -241,8 +242,8 @@ public class GuildManager {
 	
 	public void readParty() {
 		System.out.println("┌──────────────────────────────────┐");
-		for (int i = 0; i < party_list.size(); i++) {
-			Player player = party_list.get(i);
+		for (int i = 0; i < partyList.size(); i++) {
+			Player player = partyList.get(i);
 			System.out.printf("   %d) ", i+1);
 			System.out.println(player);
 		}
@@ -255,7 +256,7 @@ public class GuildManager {
 	}
 	
 	public int partySize() {
-		return party_list.size();
+		return partyList.size();
 	}
 
 	public void deletePlayer(int index) {
@@ -273,6 +274,10 @@ public class GuildManager {
 
 	public void SubCoin(int coin) {
 		guild.setOutCoin(coin);
+	}
+	
+	public void setCoin() {
+		guild.setCoin();
 	}
 
 }

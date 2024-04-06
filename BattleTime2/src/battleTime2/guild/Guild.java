@@ -8,6 +8,10 @@ public class Guild {
 		return this.coin;
 	}
 	
+	public void setCoin() {
+		this.coin = 0;
+	}
+	
 	public void setInCoin(int coin) {
 		this.coin += coin;
 	}	

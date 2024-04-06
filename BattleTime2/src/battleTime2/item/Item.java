@@ -30,6 +30,10 @@ public class Item {
 		return this.type;
 	}
 	
+	public int getSubType() {
+		return this.subType;
+	}
+	
 	public String getName() {
 		return this.name;
 	}

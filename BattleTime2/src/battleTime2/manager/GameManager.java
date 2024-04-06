@@ -1,5 +1,6 @@
 package battleTime2.manager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -13,6 +14,7 @@ import battleTime2.stage.StageLobby;
 import battleTime2.stage.StageStore;
 import battleTime2.stage.StageTitle;
 import battleTime2.stage.StageVillage;
+import battleTime2.unit.Unit;
 
 public class GameManager {
 	public static Scanner sc = new Scanner(System.in);
@@ -21,9 +23,13 @@ public class GameManager {
 
 	public static GuildManager guildManager = GuildManager.getInstance();
 	public static InventoryManager inventoryManager = InventoryManager.getInstance();
-
+	public static MonsterManager monsterManager = MonsterManager.getInstance();
+	
+	public static ArrayList<Unit> monsterList;
+	public static ArrayList<Unit> pList;
+	
 	public static int day = 1; // 날짜
-	public static int battleNum; // 하루 배틀 횟수 제한
+	public static int battleNum = 3; // 하루 배틀 횟수 제한
 
 	private Map<String, Stage> stageList = new HashMap<String, Stage>();
 

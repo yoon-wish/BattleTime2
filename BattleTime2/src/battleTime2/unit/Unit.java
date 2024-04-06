@@ -14,7 +14,7 @@ public class Unit {
 	private int power;
 	private int defense;
 	private int level;
-	private int point;
+	private int exp;
 	
 	private Item weapon;
 	private Item armor;
@@ -30,7 +30,8 @@ public class Unit {
 		this.power = power;
 		this.defense = defense;
 		this.level = 1;
-		this.point = 0;
+		this.exp = 0;
+		this.hpBar = new int[hp/50];
 	}
 	
 	// 몬스터
@@ -62,6 +63,14 @@ public class Unit {
 	
 	public int getHp() {
 		return this.hp;
+	}
+	
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+	
+	public int getMaxHp() {
+		return maxHp;
 	}
 	
 	public int getPower() {
@@ -106,6 +115,45 @@ public class Unit {
 	
 	public void setArmor() {
 		this.armor = null;
+	}
+	
+	public void printData() {
+		double temp = hp;
+		temp = Math.floor(temp / 50);
+		
+		for(int i=0; i<hpBar.length; i++) {
+			hpBar[i] = 0;
+		}
+		
+		for(int i=0; i<temp; i++) {
+			hpBar[i] = MY_HP;
+		}
+		
+		if(job == null) {
+			System.out.printf("[%3s] ", this.name);
+		} else {
+		System.out.printf("[%3s](%3s) ", this.name, this.job);
+		}
+		
+		for(int i=0; i<hpBar.length; i++) {
+			if(hpBar[i] == MY_HP)
+				System.out.print("■");
+			else 
+				System.out.print("□");
+		}
+		
+		
+		System.out.printf("[♥%d/%d][🗡️%d/🛡️%d]\n", this.hp, this.maxHp, this.power, this.defense);
+		
+	}
+	
+	public void attack(Unit target) {
+		target.hp -= power;
+		System.out.printf("🧨[%s](이)가 [%s]에게 %d의 데미지를 입힙니다.", this.name, target.name, power);
+		if(target.hp <= 0) {
+			target.hp = 0;
+			System.out.printf("\n[%s]를 처치했습니다.\n", target.name);
+		}
 	}
 	
 }
