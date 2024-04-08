@@ -18,6 +18,7 @@ public class PlayerWarrior extends Player{
 		if(target.getHp() <= 0) {
 			target.setHp(0);
 			System.out.printf("[%s]를 처치했습니다.\n", target.getName());
+			levelUp(target);
 		}
 	}
 	

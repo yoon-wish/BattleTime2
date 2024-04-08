@@ -20,6 +20,7 @@ public class PlayerWizard extends Player{
 			if(monster.getHp() <= 0) {
 				monster.setHp(0);
 				System.out.printf("[%s]를 처치했습니다.\n", monster.getName());
+				levelUp(monster);
 			}
 		}
 		

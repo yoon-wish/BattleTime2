@@ -335,7 +335,6 @@ public class StageStore extends Stage {
 
 		int subType = potion == hpPotion ? Potion.HP : Potion.SP;
 		Potion item = new Potion(subType);
-		System.out.println("item" + item.getName());
 		GameManager.inventoryManager.createItem(item);
 
 		potion -= number;

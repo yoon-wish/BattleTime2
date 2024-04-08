@@ -86,16 +86,34 @@ public class InventoryManager {
 		Item item = itemList.get(index);
 		// 누구에게 장착할까?
 		int idx = selectPlayer();
-		Player player = GameManager.guildManager.readPlayer(index);
+		Player player = GameManager.guildManager.readPlayer(idx);
 
 		// 아이템 타입 확인
 		int type = item.getType();
 
 		// 플레이어에 넣어주기
+		// 무기
 		if (type == Item.WEAPON) {
+			if(player.getWeapon() != null) {
+				System.out.println("이미 무기를 장착중입니다.");
+				return false;
+			}
 			player.setWeapon(item);
-		} else if (type == Item.ARMOR) {
+			// 공격력 상승
+			double power = player.getPower() * item.getAbility();
+			player.setPower((int) power);
+		} 
+		
+		// 갑옷
+		else if (type == Item.ARMOR) {
+			if(player.getArmor() != null) {
+				System.out.println("이미 갑옷을 장착중입니다.");
+				return false;
+			}
 			player.setArmor(item);
+			// 방어력 상승
+			double defense = player.getDefense() * item.getAbility();
+			player.setPower((int) defense);
 		} else {
 			System.out.println("포션은 장착할 수 없다.");
 			return false;
@@ -137,6 +155,9 @@ public class InventoryManager {
 			} else {
 				Item item = player.getWeapon();
 				itemList.add(item);
+				// 공격력 원상복구
+				double power = player.getPower() / item.getAbility();
+				player.setPower((int) power);
 				player.setWeapon();
 			}
 		} else if (menu == 2) {
@@ -146,6 +167,9 @@ public class InventoryManager {
 			} else {
 				Item item = player.getArmor();
 				itemList.add(item);
+				// 방어력 원상복구
+				double defense = player.getDefense() / item.getAbility();
+				player.setPower((int) defense);
 				player.setArmor();
 			}
 		}

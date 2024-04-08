@@ -5,7 +5,6 @@ import battleTime2.manager.GameManager;
 import battleTime2.manager.GuildManager;
 import battleTime2.manager.MonsterManager;
 import battleTime2.unit.Unit;
-import battleTime2.unit.monster.Monster;
 import battleTime2.unit.player.Player;
 
 public class StageBattle extends Stage {
@@ -19,8 +18,10 @@ public class StageBattle extends Stage {
 	private int monsterDead = 0;
 
 	private int monster_index = 0;
-	
+
 	public static boolean allDead;
+	public static boolean isLose;
+
 	
 	@Override
 	public boolean update() {
@@ -96,23 +97,23 @@ public class StageBattle extends Stage {
 	@Override
 	public void init() {
 		// 몬스터 생성
-		// 당일 첫 배틀인 경우
-		if (GameManager.monsterList == null) {
+		if (!isLose) {
 			GameManager.monsterManager.monster_rand_set(4);
 			GameManager.monsterList = MonsterManager.monster_list;
-
 			monsterDead = GameManager.monsterList.size();
 			playerDead = GameManager.guildManager.partySize();
 		}
-		// 당일 패배 후 재배틀인 경우
+		// 패배 후 재배틀인 경우
 		else {
 			for (int i = 0; i < GameManager.monsterList.size(); i++) {
 				Unit monster = GameManager.monsterList.get(i);
 				monster.setHp(monster.getMaxHp());
 			}
 		}
+		
+		isLose = false;
 	}
-	
+
 	private void playerDead() {
 		int coin = GameManager.rand.nextInt(100) + 50;
 		int temp = GameManager.guildManager.readCoin();
@@ -123,6 +124,7 @@ public class StageBattle extends Stage {
 		}
 
 		allDead = true;
+		GameManager.battleNum --;
 		
 		try {
 			System.out.println("┌────────────────────────────┐");

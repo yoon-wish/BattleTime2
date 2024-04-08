@@ -9,8 +9,7 @@ public class StageLobby extends Stage {
 	private final int BATTLE = 3;
 	private final int SAVE = 4;
 	private final int EXIT = 5;
-	private boolean isSave;
-
+	
 	@Override
 	public boolean update() {
 		System.out.println("┌──────────────┐");
@@ -40,7 +39,7 @@ public class StageLobby extends Stage {
 		else if(sel == BATTLE) {
 			if (GameManager.battleNum == 0) {
 				System.out.println("┌────────────────────────────────────┐");
-				System.out.println("   오늘 이미 전투를 치뤘다");
+				System.out.println("   오늘 이미 3회의 전투를 치뤘다");
 				System.out.println("   다들 지친 상태이다");
 				System.out.println("   휴식을 취하고 다음 날 다시 오자");
 				System.out.println("└────────────────────────────────────┘");

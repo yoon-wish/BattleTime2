@@ -31,6 +31,7 @@ public class Weapon extends Item{
 		super.setInfo(info);
 		super.setName(name);
 		super.setPrice(price);
+		super.setAbility(ability);
 	}
 
 	private String bWeapon() {

@@ -33,6 +33,10 @@ public class Player extends Unit implements SkillAble{
 		return this.sp;
 	}
 	
+	public void setSp() {
+		this.sp = maxSp;
+	}
+	
 	public void setSubSp() {
 		this.sp --;
 	}

@@ -18,11 +18,8 @@ public class MonsterManager {
 		return instance;
 	}
 	
-	public MonsterManager() {
-		monster_list = new ArrayList<>();
-	}
-	
 	public void monster_rand_set(int size) {
+		monster_list = new ArrayList<>();
 		for (int i = 0; i < size; i++) {
 			int num = GameManager.rand.nextInt(monNames.length);
 			try {
@@ -30,10 +27,11 @@ public class MonsterManager {
 				Object obj = clazz.getDeclaredConstructor().newInstance();
 
 				Unit temp = (Unit) obj;
-				int level = GameManager.rand.nextInt(GameManager.day) + 1;
+				int level = GameManager.rand.nextInt(GameManager.day) + GameManager.day;
+				temp.setLevel(level);
 				int hp = (GameManager.rand.nextInt(level * 100)) + 100;
-				int power = GameManager.rand.nextInt(level * 50) + (level * 50 / 2);
-				int defense = power / 4;
+				int power = GameManager.rand.nextInt(level * 10) + (level * 10);
+				int defense = power / 2;
 				
 				temp.init(hp, power, defense, level);
 				monster_list.add(temp);

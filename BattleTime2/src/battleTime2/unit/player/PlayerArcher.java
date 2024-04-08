@@ -18,18 +18,20 @@ public class PlayerArcher extends Player{
 		if(target.getHp() <= 0) {
 			target.setHp(0);
 			System.out.printf("[%s]를 처치했습니다.\n", target.getName());
+			levelUp(target);
 		}
 		
 		for(int i=0; i<GameManager.monsterList.size(); i++) {
 			Unit monster = GameManager.monsterList.get(i);
 			if(monster == target) {
-				return ;
+				continue;
 			}
 			monster.setHp(monster.getHp() - this.getPower() / 2);
 			System.out.printf("🧨[%s](이)가 [%s]에게 %d의 데미지를 입힙니다.\n", this.getName(), monster.getName(), this.getPower() / 2);
 			if(monster.getHp() <= 0) {
 				monster.setHp(0);
 				System.out.printf("[%s]를 처치했습니다.\n", monster.getName());
+				levelUp(target);
 			}
 		}
 		
