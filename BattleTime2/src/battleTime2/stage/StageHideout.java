@@ -86,7 +86,7 @@ public class StageHideout extends Stage {
 			System.out.println("   보유 코인: " + GameManager.guildManager.readCoin() + " coin");
 			System.out.println("└────────────────────────────┘");
 		} else if (sel == SLEEP) {
-			System.out.println("잠에 들건가요? (y/n");
+			System.out.println("잠에 들건가요? (y/n)");
 			System.out.print("👉 ");
 			if(GameManager.sc.next().equals("y")) {
 				int size = GameManager.guildManager.guildSize();

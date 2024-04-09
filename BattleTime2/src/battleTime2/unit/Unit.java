@@ -200,7 +200,7 @@ public class Unit {
 			return;
 		}
 
-		exp += target.level * 10;
+		exp += target.level * 20;
 		while (exp / maxExp > 0) {
 			if (exp >= maxExp) {
 				System.out.printf("🌟✨ [%s] ＬＥＶＥＬ ＵＰ ✨🌟\n", this.name);

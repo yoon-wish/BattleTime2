@@ -290,7 +290,6 @@ public class StageStore extends Stage {
 				System.out.println("   아쉽게도 오늘은 들어온 물건이 없어");
 				Thread.sleep(500);
 				System.out.println("└──────────────────────────────────────┘");
-				Back();
 				return false;
 			} else {
 				System.out.printf("   마침 오늘 %s포션이 %d개 들어왔지\n", name, potion);
@@ -335,9 +334,16 @@ public class StageStore extends Stage {
 
 		int subType = potion == hpPotion ? Potion.HP : Potion.SP;
 		Potion item = new Potion(subType);
-		GameManager.inventoryManager.createItem(item);
 
-		potion -= number;
+		for (int i = 0; i < number; i++) {
+			GameManager.inventoryManager.createItem(item);
+		}
+
+		if(name.equals("HP")) {
+			hpPotion -= number;
+		} else if(name.equals("SP"))
+			spPotion -= number;
+
 		GameManager.guildManager.SubCoin(number * price);
 
 		System.out.println("┌─────────────────────────────┐");

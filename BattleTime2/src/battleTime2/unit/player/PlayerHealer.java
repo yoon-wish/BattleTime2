@@ -14,7 +14,7 @@ public class PlayerHealer extends Player{
 		System.out.println("🌿💫✨~༺༄ 안정의 선율 ༄༻~✨💫🌿");
 		for(int i=0; i<GuildManager.partyList.size(); i++) {
 			Player player = GuildManager.partyList.get(i);
-			double heal = player.getMaxHp() * 0.3;
+			double heal = player.getMaxHp() * 0.5;
 			if(player.getHp() == 0) {
 				return;
 			}

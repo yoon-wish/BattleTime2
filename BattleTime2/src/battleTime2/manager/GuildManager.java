@@ -267,7 +267,12 @@ public class GuildManager {
 	}
 
 	public void deletePlayer(int index) {
+		if(player_list.get(index).getParty()) {
+			System.out.println("파티에 참여 중인 길드원은 추방할 수 없습니다.");
+			return;
+		}
 		player_list.remove(index);
+		System.out.println("바이바이 !");
 	}
 
 	// 코인관리

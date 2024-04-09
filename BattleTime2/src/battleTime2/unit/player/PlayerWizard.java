@@ -16,8 +16,15 @@ public class PlayerWizard extends Player{
 		for(int i=0; i<GameManager.monsterList.size(); i++) {
 			Unit monster = GameManager.monsterList.get(i);
 			int attack = this.getPower() / 2 - monster.getDefense();
+			if(attack <= 0) {
+				attack = 0;
+			}
 			monster.setHp(monster.getHp() - attack);
-			System.out.printf("🧨[%s](이)가 [%s]에게 %d의 데미지를 입힙니다.\n", this.getName(), monster.getName(), attack);
+			
+			if(attack == 0) {
+				System.out.printf("[%s](이)가 [%s]에게 MISS !!!\n", this.getName(), monster.getName(), attack);				
+			}else 
+				System.out.printf("🧨[%s](이)가 [%s]에게 %d의 데미지를 입힙니다.\n", this.getName(), monster.getName(), attack);
 			if(monster.getHp() <= 0) {
 				monster.setHp(0);
 				System.out.printf("[%s]를 처치했습니다.\n", monster.getName());

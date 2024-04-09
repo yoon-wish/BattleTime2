@@ -55,7 +55,6 @@ public class StageGuild extends Stage{
 			System.out.print("👉 ");
 			if(GameManager.inputString().equals("y")) {
 				GameManager.guildManager.deletePlayer(index);
-				System.out.println("바이바이 !");
 			} else {
 				System.out.println("추방하지 않았다.");
 				return false;

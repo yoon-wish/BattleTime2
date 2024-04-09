@@ -47,11 +47,15 @@ public class StageBattle extends Stage {
 			}
 
 			// 플레이어 턴이면
-			if (turn) {
-				print_character();
-				
+			if (turn) {		
+		
 				// 플레이어 턴이면
 				if (player_index < GuildManager.partyList.size()) {
+					if(GuildManager.partyList.get(player_index).getHp() <= 0) {
+						player_index += 1;
+						continue;
+					}
+					print_character();
 					player_attack(player_index);
 					player_index += 1;
 				}
@@ -88,7 +92,7 @@ public class StageBattle extends Stage {
 
 		if (playerDead <= 0) {
 			playerDead();
-			GameManager.nextStage = "HOUSE";
+			GameManager.nextStage = "HIDEOUT";
 		}
 		
 		return false;
@@ -115,13 +119,9 @@ public class StageBattle extends Stage {
 	}
 
 	private void playerDead() {
-		int coin = GameManager.rand.nextInt(100) + 50;
-		int temp = GameManager.guildManager.readCoin();
+		int rNum = GameManager.guildManager.readCoin() / 2;
+		int coin = GameManager.rand.nextInt(rNum) + rNum;
 		GameManager.guildManager.SubCoin(coin);
-		if (temp < 0) {
-			coin = temp;
-			GameManager.guildManager.setCoin();
-		}
 
 		allDead = true;
 		GameManager.battleNum --;
@@ -326,13 +326,19 @@ public class StageBattle extends Stage {
 	
 	private void giveHpPotion(int pIndex, int iIndex) {
 		Player healPlayer = GuildManager.partyList.get(pIndex);
-		int temp = healPlayer.getHp();
-		int heal = healPlayer.getMaxHp() / 2;
-		healPlayer.setHp(heal);
+		if(healPlayer.getHp() == 0) {
+			System.out.println("쓰러진 플레이어에게는 사용할 수 없습니다.");
+			return;
+		}
+		
 		int maxHp = healPlayer.getMaxHp();
-		if(temp > maxHp )
+		int temp = healPlayer.getHp();
+		int heal = temp + (maxHp / 2);
+		healPlayer.setHp(heal);
+		if(healPlayer.getHp() > maxHp )
 			healPlayer.setHp(maxHp);
 		temp = healPlayer.getHp() - temp;
+		
 		
 		GameManager.inventoryManager.removeItem(iIndex);
 		
@@ -358,11 +364,11 @@ public class StageBattle extends Stage {
 	}
 	
 	public int selectPlayer() {
-		System.out.println("┌──────────────┐");
+		System.out.println("┌─────────────────────────────────────────┐");
 		for (int i = 0; i < GuildManager.partyList.size(); i++) {
 			System.out.printf("    %d) %s\n", i + 1, GuildManager.partyList.get(i));
 		}
-		System.out.println("└──────────────┘");
+		System.out.println("└─────────────────────────────────────────┘");
 		System.out.print("👉 ");
 		int index = (GameManager.sc.nextInt()) - 1;
 
