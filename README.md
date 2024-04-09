@@ -97,3 +97,45 @@
     * 저장하지 않고 종료 시, 해당 날짜의 게임 데이터는 사라집니다.
 
 <br>
+
+> Class Diagram (UML)
+### Stage
+![Diagram]( 링크 )
+### Unit
+![Diagram]( 링크 )
+
+<br>
+<br>
+
+> Demo
+## 1일차
+**게임 시작, 파티 등록과 배틀**
+![gif](BattleTime2/src/battleTime2/resource/BattleTime_1일차.gif)
+
+<br>
+<br>
+
+## 2일차
+**상점 이용(무기 구매), 장착 후 배틀 참여**
+![gif](BattleTime2/src/battleTime2/resource/BattleTime_2일차.gif)
+<br>
+<br>
+#### ▼ 10퍼센트의 확률로 스킬포인트가 영구적으로 1 증가합니다.
+<img src="BattleTime2/src/battleTime2/resource/addSp.png" width="400"/>
+<br>
+<br>
+
+## 3일차
+**상점 이용(포션 구매), 포션 사용**
+![gif](BattleTime2/src/battleTime2/resource/BattleTime_3일차.gif)
+<br>
+<br>
+
+## 패배
+**전투, 취침**
+![gif](BattleTime2/src/battleTime2/resource/battleTime_lose.gif)
+<br>
+<br>
+#### ▼ 3번의 전투가 끝난 후에는 재전투가 불가능합니다.
+<img src="BattleTime2/src/battleTime2/resource/battleNum.png" width="400"/>
+
