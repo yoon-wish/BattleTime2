@@ -100,9 +100,11 @@
 
 > Class Diagram (UML)
 ### Stage
-![Diagram]( 링크 )
+![Diagram](BattleTime2/src/battleTime2/resource/BattleTime2_Stage.jpg)
 ### Unit
-![Diagram]( 링크 )
+![Diagram](BattleTime2/src/battleTime2/resource/BattleTime2_Unit.jpg)
+### Item
+![Diagram](BattleTime2/src/battleTime2/resource/BattleTime2_Item.jpg)
 
 <br>
 <br>
