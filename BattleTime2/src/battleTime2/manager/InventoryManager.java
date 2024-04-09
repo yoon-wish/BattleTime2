@@ -3,6 +3,7 @@ package battleTime2.manager;
 import java.util.ArrayList;
 
 import battleTime2.item.Item;
+import battleTime2.item.Potion;
 import battleTime2.unit.player.Player;
 
 public class InventoryManager {
@@ -35,6 +36,10 @@ public class InventoryManager {
 		System.out.println("└─────────────────────────────────┘");
 
 		return true;
+	}
+	
+	public Item readItem(int index) {
+		return itemList.get(index);
 	}
 
 	public boolean readInventoryVerBattle() {
@@ -75,7 +80,7 @@ public class InventoryManager {
 
 		return count;
 	}
-	
+
 	public int findKindOfPotion(int index) {
 		Item item = itemList.get(index);
 		return item.getSubType();
@@ -94,7 +99,7 @@ public class InventoryManager {
 		// 플레이어에 넣어주기
 		// 무기
 		if (type == Item.WEAPON) {
-			if(player.getWeapon() != null) {
+			if (player.getWeapon() != null) {
 				System.out.println("이미 무기를 장착중입니다.");
 				return false;
 			}
@@ -102,18 +107,18 @@ public class InventoryManager {
 			// 공격력 상승
 			double power = player.getPower() * item.getAbility();
 			player.setPower((int) power);
-		} 
-		
+		}
+
 		// 갑옷
 		else if (type == Item.ARMOR) {
-			if(player.getArmor() != null) {
+			if (player.getArmor() != null) {
 				System.out.println("이미 갑옷을 장착중입니다.");
 				return false;
 			}
 			player.setArmor(item);
 			// 방어력 상승
 			double defense = player.getDefense() * item.getAbility();
-			player.setPower((int) defense);
+			player.setDefense((int) defense);
 		} else {
 			System.out.println("포션은 장착할 수 없다.");
 			return false;
@@ -175,6 +180,28 @@ public class InventoryManager {
 		}
 
 		return true;
+	}
+
+	public int countHpPotion() {
+		int count = 0;
+		for (int i = 0; i < itemList.size(); i++) {
+			if (itemList.get(i).getType() == Item.POTION) {
+				if (itemList.get(i).getSubType() == Potion.HP)
+					count++;
+			}
+		}
+		return count;
+	}
+	
+	public int countSpPotion() {
+		int count = 0;
+		for (int i = 0; i < itemList.size(); i++) {
+			if (itemList.get(i).getType() == Item.POTION) {
+				if (itemList.get(i).getSubType() == Potion.SP)
+					count++;
+			}
+		}
+		return count;
 	}
 
 	private int selectPlayer() {

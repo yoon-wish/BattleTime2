@@ -200,13 +200,45 @@ public class Unit {
 			return;
 		}
 
-		exp += target.level * 20;
+		exp += target.level * 10;
 		while (exp / maxExp > 0) {
 			if (exp >= maxExp) {
 				System.out.printf("🌟✨ [%s] ＬＥＶＥＬ ＵＰ ✨🌟\n", this.name);
 				level++;
 				maxHp += 100;
-				this.hpBar = new int[hp / 50];
+				this.hpBar = new int[maxHp / 50];
+				// 무기 장착여부 확인 후 공격력 상승
+				if (weapon != null) {
+					// 아이템 뺀 기본 공격력
+					int tempPower = (int) (power / weapon.getAbility());
+					// 기본 공격력 + 10
+					tempPower += 10;
+					// 아이템 장착 후 공격력
+					power = (int) (tempPower * weapon.getAbility());
+				} else
+					power += 10;
+
+				// 갑옷 장착여부 확인 후 방어력 상승
+				if (armor != null) {
+					int tempPower = (int) (defense / armor.getAbility());
+					tempPower += 10;
+					defense = (int) (tempPower * armor.getAbility());
+				} else
+					defense += 10;
+			}
+			hp = maxHp;
+			exp -= maxExp;
+			maxExp += 20;
+		}
+	}
+	
+	// 로드용 레벨업
+	public void levelUp(int exp) {
+		while (exp / maxExp > 0) {
+			if (exp >= maxExp) {
+				level++;
+				maxHp += 100;
+				this.hpBar = new int[maxHp / 50];
 				// 무기 장착여부 확인 후 공격력 상승
 				if (weapon != null) {
 					// 아이템 뺀 기본 공격력
@@ -229,6 +261,8 @@ public class Unit {
 			exp -= maxExp;
 			maxExp += 20;
 		}
+		hp = maxHp;
+		this.exp = exp;
 	}
 
 }

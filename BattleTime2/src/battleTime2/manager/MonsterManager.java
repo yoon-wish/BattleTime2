@@ -29,8 +29,8 @@ public class MonsterManager {
 				Unit temp = (Unit) obj;
 				int level = GameManager.rand.nextInt(GameManager.day) + GameManager.day;
 				temp.setLevel(level);
-				int hp = (GameManager.rand.nextInt(level * 100)) + 100;
-				int power = GameManager.rand.nextInt(level * 10) + (level * 10);
+				int hp = level * 100;
+				int power = GameManager.rand.nextInt(level * 10) + (level * 20);
 				int defense = power / 2;
 				
 				temp.init(hp, power, defense, level);

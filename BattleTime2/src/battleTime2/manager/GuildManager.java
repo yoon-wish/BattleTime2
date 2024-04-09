@@ -32,11 +32,9 @@ public class GuildManager {
 	public GuildManager() {
 		player_list = new ArrayList<>();
 		partyList = new ArrayList<>();
-		
-		start();
 	}
 
-	private void start() {
+	public void start() {
 		try {
 			Thread.sleep(700);
 			System.out.println("╔══════════════ ⚔️ 𝓑𝓪𝓽𝓽𝓵𝓮 𝓣𝓲𝓶𝓮 ⚔️ ══════════════╗");
@@ -105,6 +103,11 @@ public class GuildManager {
 			player_list.add(new PlayerHealer(name));
 	}
 
+	// 로드용
+	public void addPlayer(Player player) {
+		player_list.add(player);
+	}
+	
 	public boolean duplName(String name) {
 		for (int i = 0; i < player_list.size(); i++) {
 			String temp = player_list.get(i).getName();
@@ -216,7 +219,11 @@ public class GuildManager {
 		player.setParty();
 		System.out.println("파티에 추가되었습니다.");
 		return true;
-		
+	}
+	
+	public void addParty(Player player) {
+		partyList.add(player);
+		player.setParty();
 	}
 	
 	public void subParty(int index) {
