@@ -60,7 +60,7 @@ public class Unit {
 		this.name = name;
 	}
 
-	public String getJop() {
+	public String getJob() {
 		return this.job;
 	}
 

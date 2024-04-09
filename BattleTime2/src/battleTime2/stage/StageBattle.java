@@ -203,7 +203,7 @@ public class StageBattle extends Stage {
 	
 	public void player_attack(int index) {
 		Player player = GuildManager.partyList.get(index);
-		String job = player.getJop();
+		String job = player.getJob();
 		// 쓰러진 플레이어 공격권 넘기기
 		if(player.getHp() <= 0)
 			return;

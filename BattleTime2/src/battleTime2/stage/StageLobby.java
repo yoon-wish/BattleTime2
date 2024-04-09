@@ -126,21 +126,21 @@ public class StageLobby extends Stage {
 
 			// 무기, 갑옷 둘 다 없을 때
 			if (player.getWeapon() == null && player.getArmor() == null) {
-				info += player.getName() + "/" + player.getJop() + "/" + exp + "/" + "/" + "/" + player.getParty();
+				info += player.getName() + "/" + player.getJob() + "/" + exp + "/" + "/" + "/" + player.getParty();
 			} 
 			// 갑옷만 없을 때
 			else if (player.getArmor() == null) {
-				info += player.getName() + "/" + player.getJop() + "/" + exp + "/" + player.getWeapon().getSubType()
+				info += player.getName() + "/" + player.getJob() + "/" + exp + "/" + player.getWeapon().getSubType()
 						+ "/" + "/" + player.getParty();
 			} 
 			// 무기만 없을 때
 			else if (player.getWeapon() == null) {
-				info += player.getName() + "/" + player.getJop() + "/" + exp + "/" + "/"
+				info += player.getName() + "/" + player.getJob() + "/" + exp + "/" + "/"
 						+ player.getArmor().getSubType() + "/" + player.getParty();
 			} 
 			// 둘 다 있을 때
 			else {
-				info += player.getName() + "/" + player.getJop() + "/" + exp + "/" + player.getWeapon().getSubType()
+				info += player.getName() + "/" + player.getJob() + "/" + exp + "/" + player.getWeapon().getSubType()
 						+ "/" + player.getArmor().getSubType() + "/" + player.getParty();
 			}
 			

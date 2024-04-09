@@ -49,7 +49,7 @@ public class Player extends Unit implements SkillAble{
 	public String toString() {
 		String info = "";
 		
-		return String.format("[%s] %s/♥%d/🗡️%d/🛡️%d", getName(), getJop(), getHp(), getPower(), getDefense());
+		return String.format("[%s] %s/♥%d/🗡️%d/🛡️%d", getName(), getJob(), getHp(), getPower(), getDefense());
 	}
 
 }
